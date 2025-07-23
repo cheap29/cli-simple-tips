@@ -1,0 +1,895 @@
+[
+  {
+    "command": "dir",
+    "example": "dir /w",
+    "description": "ディレクトリ内のファイルとフォルダを一覧表示",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/w", "detail": "ワイド形式で表示（ファイル名のみ横並び）" },
+      { "option": "/p", "detail": "画面単位でページ表示" },
+      { "option": "/s", "detail": "サブディレクトリも含めて表示" },
+      { "option": "/a", "detail": "隠しファイルも表示" },
+      { "option": "/o:n", "detail": "名前順でソート" },
+      { "option": "/o:d", "detail": "日付順でソート" },
+      { "option": "/o:s", "detail": "サイズ順でソート" }
+    ]
+  },
+  {
+    "command": "cd",
+    "example": "cd C:\\Users",
+    "description": "現在のディレクトリを変更",
+    "os": ["Windows"],
+    "params": [
+      { "option": "cd ..", "detail": "親ディレクトリに移動" },
+      { "option": "cd \\", "detail": "ルートディレクトリに移動" },
+      { "option": "cd /d", "detail": "ドライブも同時に変更" }
+    ]
+  },
+  {
+    "command": "copy",
+    "example": "copy file1.txt file2.txt",
+    "description": "ファイルをコピー",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/y", "detail": "上書き確認を省略" },
+      { "option": "/v", "detail": "コピー後にベリファイ" },
+      { "option": "/a", "detail": "ASCII形式でコピー" },
+      { "option": "/b", "detail": "バイナリ形式でコピー" }
+    ]
+  },
+  {
+    "command": "xcopy",
+    "example": "xcopy C:\\source D:\\backup /e /i",
+    "description": "ディレクトリとファイルを高機能コピー",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/e", "detail": "空のディレクトリも含めてコピー" },
+      { "option": "/s", "detail": "サブディレクトリをコピー（空除く）" },
+      {
+        "option": "/i",
+        "detail": "宛先が存在しない場合はディレクトリとして作成"
+      },
+      { "option": "/y", "detail": "上書き確認を省略" }
+    ]
+  },
+  {
+    "command": "robocopy",
+    "example": "robocopy C:\\source D:\\backup /e /r:3",
+    "description": "高機能なファイル・ディレクトリコピーツール",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/e", "detail": "空のディレクトリも含めてコピー" },
+      { "option": "/r:3", "detail": "失敗時のリトライ回数を3回に設定" },
+      { "option": "/w:30", "detail": "リトライ間隔を30秒に設定" },
+      { "option": "/log:file.txt", "detail": "ログをファイルに出力" }
+    ]
+  },
+  {
+    "command": "del",
+    "example": "del *.tmp",
+    "description": "ファイルを削除",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/p", "detail": "削除前に確認" },
+      { "option": "/f", "detail": "読み取り専用ファイルも強制削除" },
+      { "option": "/s", "detail": "サブディレクトリからも削除" },
+      { "option": "/q", "detail": "削除確認を表示しない" }
+    ]
+  },
+  {
+    "command": "rmdir",
+    "example": "rmdir /s /q temp",
+    "description": "ディレクトリを削除",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/s", "detail": "サブディレクトリとファイルも削除" },
+      { "option": "/q", "detail": "確認なしで削除" }
+    ]
+  },
+  {
+    "command": "md",
+    "example": "md newfolder",
+    "description": "新しいディレクトリを作成（mkdirと同じ）",
+    "os": ["Windows"],
+    "params": [
+      {
+        "option": "md path\\to\\folder",
+        "detail": "パスを指定してディレクトリ作成"
+      }
+    ]
+  },
+  {
+    "command": "type",
+    "example": "type file.txt",
+    "description": "テキストファイルの内容を表示",
+    "os": ["Windows"],
+    "params": [
+      { "option": "type file.txt | more", "detail": "ページ単位で表示" }
+    ]
+  },
+  {
+    "command": "find",
+    "example": "find \"error\" logfile.txt",
+    "description": "ファイル内の文字列を検索",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/i", "detail": "大文字小文字を区別しない" },
+      { "option": "/n", "detail": "行番号も表示" },
+      { "option": "/c", "detail": "マッチした行数をカウント" }
+    ]
+  },
+  {
+    "command": "findstr",
+    "example": "findstr /i \"pattern\" *.txt",
+    "description": "ファイル内の文字列を検索",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/i", "detail": "大文字小文字を区別しない" },
+      { "option": "/r", "detail": "正規表現を使用" },
+      { "option": "/s", "detail": "サブディレクトリも検索" },
+      { "option": "/n", "detail": "行番号も表示" }
+    ]
+  },
+  {
+    "command": "tasklist",
+    "example": "tasklist /fi \"imagename eq notepad.exe\"",
+    "description": "実行中のプロセス一覧を表示",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/fi", "detail": "フィルターを適用" },
+      { "option": "/fo table", "detail": "テーブル形式で表示" },
+      { "option": "/v", "detail": "詳細情報を表示" }
+    ]
+  },
+  {
+    "command": "taskkill",
+    "example": "taskkill /f /im notepad.exe",
+    "description": "プロセスを強制終了",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/f", "detail": "強制終了" },
+      { "option": "/im", "detail": "イメージ名で指定" },
+      { "option": "/pid", "detail": "プロセスIDで指定" }
+    ]
+  },
+  {
+    "command": "ping",
+    "example": "ping google.com",
+    "description": "ネットワークの接続確認",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-t", "detail": "連続してpingを送信" },
+      { "option": "-n 4", "detail": "送信回数を指定" },
+      { "option": "-l 1024", "detail": "パケットサイズを指定" }
+    ]
+  },
+  {
+    "command": "ipconfig",
+    "example": "ipconfig /all",
+    "description": "IPアドレス設定を表示・変更",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/all", "detail": "詳細な設定情報を表示" },
+      { "option": "/release", "detail": "IPアドレスを解放" },
+      { "option": "/renew", "detail": "IPアドレスを更新" },
+      { "option": "/flushdns", "detail": "DNSキャッシュをクリア" }
+    ]
+  },
+  {
+    "command": "netstat",
+    "example": "netstat -an",
+    "description": "ネットワーク接続状況を表示",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-a", "detail": "すべての接続とポートを表示" },
+      { "option": "-n", "detail": "数値形式で表示" },
+      { "option": "-o", "detail": "プロセスIDも表示" },
+      { "option": "-r", "detail": "ルーティングテーブルを表示" }
+    ]
+  },
+  {
+    "command": "systeminfo",
+    "example": "systeminfo",
+    "description": "システム情報を詳細表示",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/fo csv", "detail": "CSV形式で出力" },
+      {
+        "option": "/s computername",
+        "detail": "リモートコンピューターの情報を取得"
+      }
+    ]
+  },
+  {
+    "command": "whoami",
+    "example": "whoami /all",
+    "description": "現在のユーザー情報を表示",
+    "os": ["Windows"],
+    "params": [
+      { "option": "/all", "detail": "すべてのユーザー情報を表示" },
+      { "option": "/groups", "detail": "グループ情報を表示" },
+      { "option": "/priv", "detail": "権限情報を表示" }
+    ]
+  },
+  {
+    "command": "ls",
+    "example": "ls -la",
+    "description": "ファイルとディレクトリを一覧表示",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-l", "detail": "詳細情報を表示" },
+      { "option": "-a", "detail": "隠しファイルも表示" },
+      {
+        "option": "-h",
+        "detail": "ファイルサイズを人間が読みやすい形式で表示"
+      },
+      { "option": "-t", "detail": "更新時刻順でソート" },
+      { "option": "-r", "detail": "逆順で表示" }
+    ]
+  },
+  {
+    "command": "cd",
+    "example": "cd /home/user",
+    "description": "ディレクトリを移動",
+    "os": ["Linux"],
+    "params": [
+      { "option": "cd -", "detail": "前のディレクトリに戻る" },
+      { "option": "cd ~", "detail": "ホームディレクトリに移動" },
+      { "option": "cd ..", "detail": "親ディレクトリに移動" }
+    ]
+  },
+  {
+    "command": "pwd",
+    "example": "pwd",
+    "description": "現在のディレクトリパスを表示",
+    "os": ["Linux"],
+    "params": []
+  },
+  {
+    "command": "cp",
+    "example": "cp file1.txt file2.txt",
+    "description": "ファイルやディレクトリをコピー",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-r", "detail": "ディレクトリを再帰的にコピー" },
+      { "option": "-i", "detail": "上書き前に確認" },
+      { "option": "-v", "detail": "詳細な情報を表示" },
+      { "option": "-p", "detail": "属性を保持してコピー" }
+    ]
+  },
+  {
+    "command": "mv",
+    "example": "mv oldname newname",
+    "description": "ファイル・ディレクトリの移動・リネーム",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-i", "detail": "上書き前に確認" },
+      { "option": "-v", "detail": "詳細な情報を表示" },
+      { "option": "-n", "detail": "既存ファイルを上書きしない" }
+    ]
+  },
+  {
+    "command": "rm",
+    "example": "rm file.txt",
+    "description": "ファイルやディレクトリを削除",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-r", "detail": "ディレクトリを再帰的に削除" },
+      { "option": "-f", "detail": "確認なしで強制削除" },
+      { "option": "-i", "detail": "削除前に確認" },
+      { "option": "-v", "detail": "削除したファイルを表示" }
+    ]
+  },
+  {
+    "command": "mkdir",
+    "example": "mkdir newfolder",
+    "description": "ディレクトリを作成",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-p", "detail": "親ディレクトリも同時に作成" },
+      { "option": "-m 755", "detail": "権限を指定して作成" },
+      { "option": "-v", "detail": "作成したディレクトリを表示" }
+    ]
+  },
+  {
+    "command": "rmdir",
+    "example": "rmdir emptyfolder",
+    "description": "空のディレクトリを削除",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-p", "detail": "親ディレクトリも削除（空の場合）" },
+      { "option": "-v", "detail": "削除したディレクトリを表示" }
+    ]
+  },
+  {
+    "command": "cat",
+    "example": "cat file.txt",
+    "description": "ファイルの内容を表示",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-n", "detail": "行番号を表示" },
+      { "option": "-b", "detail": "空白行以外に行番号を表示" },
+      { "option": "-A", "detail": "非表示文字も表示" }
+    ]
+  },
+  {
+    "command": "less",
+    "example": "less file.txt",
+    "description": "ファイルをページ単位で表示",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-N", "detail": "行番号を表示" },
+      { "option": "-S", "detail": "長い行を折り返さない" },
+      { "option": "+F", "detail": "ファイルの末尾を監視" }
+    ]
+  },
+  {
+    "command": "head",
+    "example": "head -10 file.txt",
+    "description": "ファイルの先頭部分を表示",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-n 10", "detail": "表示する行数を指定" },
+      { "option": "-c 100", "detail": "表示する文字数を指定" }
+    ]
+  },
+  {
+    "command": "tail",
+    "example": "tail -f /var/log/syslog",
+    "description": "ファイルの末尾部分を表示",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-f", "detail": "ファイルの更新を監視" },
+      { "option": "-n 10", "detail": "表示する行数を指定" },
+      { "option": "-c 100", "detail": "表示する文字数を指定" }
+    ]
+  },
+  {
+    "command": "grep",
+    "example": "grep \"pattern\" file.txt",
+    "description": "ファイルから文字列を検索",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-i", "detail": "大文字小文字を区別しない" },
+      { "option": "-r", "detail": "ディレクトリを再帰的に検索" },
+      { "option": "-n", "detail": "行番号も表示" },
+      { "option": "-v", "detail": "マッチしない行を表示" },
+      { "option": "-E", "detail": "拡張正規表現を使用" }
+    ]
+  },
+  {
+    "command": "find",
+    "example": "find /home -name \"*.txt\"",
+    "description": "ファイルやディレクトリを検索",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-name", "detail": "ファイル名で検索" },
+      { "option": "-type f", "detail": "ファイルのみ検索" },
+      { "option": "-type d", "detail": "ディレクトリのみ検索" },
+      { "option": "-size +1M", "detail": "1MB以上のファイルを検索" },
+      { "option": "-mtime -7", "detail": "7日以内に変更されたファイル" }
+    ]
+  },
+  {
+    "command": "chmod",
+    "example": "chmod 755 file.txt",
+    "description": "ファイル・ディレクトリの権限を変更",
+    "os": ["Linux"],
+    "params": [
+      {
+        "option": "755",
+        "detail": "所有者：読み書き実行、グループ・その他：読み実行"
+      },
+      { "option": "644", "detail": "所有者：読み書き、グループ・その他：読み" },
+      { "option": "-R", "detail": "ディレクトリを再帰的に変更" },
+      { "option": "+x", "detail": "実行権限を追加" }
+    ]
+  },
+  {
+    "command": "chown",
+    "example": "chown user:group file.txt",
+    "description": "ファイル・ディレクトリの所有者を変更",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-R", "detail": "ディレクトリを再帰的に変更" },
+      { "option": "user:", "detail": "ユーザーのみ変更" },
+      { "option": ":group", "detail": "グループのみ変更" }
+    ]
+  },
+  {
+    "command": "ps",
+    "example": "ps aux",
+    "description": "実行中のプロセスを表示",
+    "os": ["Linux"],
+    "params": [
+      { "option": "aux", "detail": "全ユーザーのプロセスを詳細表示" },
+      { "option": "-ef", "detail": "全プロセスを詳細表示" },
+      { "option": "-u user", "detail": "特定ユーザーのプロセスのみ" }
+    ]
+  },
+  {
+    "command": "top",
+    "example": "top",
+    "description": "システムの状態とプロセスをリアルタイム表示",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-u user", "detail": "特定ユーザーのプロセスのみ表示" },
+      { "option": "-p pid", "detail": "特定プロセスのみ監視" }
+    ]
+  },
+  {
+    "command": "kill",
+    "example": "kill 1234",
+    "description": "プロセスを終了",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-9", "detail": "強制終了（SIGKILL）" },
+      { "option": "-15", "detail": "正常終了（SIGTERM）" },
+      { "option": "-l", "detail": "シグナル一覧を表示" }
+    ]
+  },
+  {
+    "command": "df",
+    "example": "df -h",
+    "description": "ディスク使用量を表示",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-h", "detail": "人間が読みやすい形式で表示" },
+      { "option": "-T", "detail": "ファイルシステムタイプも表示" },
+      { "option": "-i", "detail": "inodeの使用量を表示" }
+    ]
+  },
+  {
+    "command": "du",
+    "example": "du -sh *",
+    "description": "ディレクトリサイズを表示",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-h", "detail": "人間が読みやすい形式で表示" },
+      { "option": "-s", "detail": "総計のみ表示" },
+      { "option": "-a", "detail": "ファイルも含めて表示" },
+      { "option": "--max-depth=1", "detail": "階層の深さを制限" }
+    ]
+  },
+  {
+    "command": "tar",
+    "example": "tar -czf archive.tar.gz folder/",
+    "description": "アーカイブファイルの作成・展開",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-c", "detail": "アーカイブを作成" },
+      { "option": "-x", "detail": "アーカイブを展開" },
+      { "option": "-z", "detail": "gzip圧縮を使用" },
+      { "option": "-f", "detail": "ファイル名を指定" },
+      { "option": "-v", "detail": "詳細な情報を表示" }
+    ]
+  },
+  {
+    "command": "wget",
+    "example": "wget https://example.com/file.zip",
+    "description": "ファイルをダウンロード",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-O filename", "detail": "保存ファイル名を指定" },
+      { "option": "-c", "detail": "中断されたダウンロードを再開" },
+      { "option": "-r", "detail": "再帰的にダウンロード" },
+      {
+        "option": "--no-check-certificate",
+        "detail": "SSL証明書の検証をスキップ"
+      }
+    ]
+  },
+  {
+    "command": "curl",
+    "example": "curl -O https://example.com/file.zip",
+    "description": "データの転送（ダウンロード・アップロード）",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-O", "detail": "リモートファイル名で保存" },
+      { "option": "-o filename", "detail": "保存ファイル名を指定" },
+      { "option": "-L", "detail": "リダイレクトに従う" },
+      { "option": "-H \"Header: value\"", "detail": "HTTPヘッダーを指定" },
+      { "option": "-X POST", "detail": "HTTPメソッドを指定" }
+    ]
+  },
+  {
+    "command": "ssh",
+    "example": "ssh user@hostname",
+    "description": "リモートサーバーにSSH接続",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-p 2222", "detail": "ポート番号を指定" },
+      { "option": "-i keyfile", "detail": "秘密鍵ファイルを指定" },
+      {
+        "option": "-L port:host:port",
+        "detail": "ローカルポートフォワーディング"
+      },
+      { "option": "-X", "detail": "X11フォワーディングを有効" }
+    ]
+  },
+  {
+    "command": "scp",
+    "example": "scp file.txt user@hostname:/path/",
+    "description": "SSHを使用してファイルをコピー",
+    "os": ["Linux"],
+    "params": [
+      { "option": "-r", "detail": "ディレクトリを再帰的にコピー" },
+      { "option": "-P 2222", "detail": "ポート番号を指定" },
+      { "option": "-i keyfile", "detail": "秘密鍵ファイルを指定" },
+      { "option": "-v", "detail": "詳細な情報を表示" }
+    ]
+  },
+  {
+    "command": "Get-ChildItem",
+    "example": "Get-ChildItem -Path C:\\ -Recurse",
+    "description": "ファイルとフォルダを一覧取得（dirの強化版）",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Path", "detail": "対象パスを指定" },
+      { "option": "-Recurse", "detail": "サブディレクトリも含める" },
+      { "option": "-Filter", "detail": "ファイル名フィルターを適用" },
+      { "option": "-Force", "detail": "隠しファイルも表示" },
+      { "option": "-Name", "detail": "名前のみ表示" }
+    ]
+  },
+  {
+    "command": "Set-Location",
+    "example": "Set-Location C:\\Users",
+    "description": "現在の場所を変更（cdの強化版）",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Path", "detail": "移動先パスを指定" },
+      { "option": "-LiteralPath", "detail": "リテラルパスを指定" }
+    ]
+  },
+  {
+    "command": "Copy-Item",
+    "example": "Copy-Item -Path source.txt -Destination dest.txt",
+    "description": "アイテムをコピー（copyの強化版）",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Path", "detail": "コピー元パス" },
+      { "option": "-Destination", "detail": "コピー先パス" },
+      { "option": "-Recurse", "detail": "サブディレクトリも含める" },
+      { "option": "-Force", "detail": "読み取り専用ファイルも上書き" },
+      { "option": "-Filter", "detail": "フィルターを適用" }
+    ]
+  },
+  {
+    "command": "Remove-Item",
+    "example": "Remove-Item -Path file.txt -Force",
+    "description": "アイテムを削除（delの強化版）",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Path", "detail": "削除対象パス" },
+      { "option": "-Recurse", "detail": "サブディレクトリも含める" },
+      { "option": "-Force", "detail": "読み取り専用ファイルも削除" },
+      { "option": "-Confirm", "detail": "削除前に確認" }
+    ]
+  },
+  {
+    "command": "New-Item",
+    "example": "New-Item -Path newfile.txt -ItemType File",
+    "description": "新しいアイテムを作成",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Path", "detail": "作成するアイテムのパス" },
+      { "option": "-ItemType", "detail": "アイテムタイプ（File/Directory）" },
+      { "option": "-Force", "detail": "既存アイテムを上書き" },
+      { "option": "-Value", "detail": "ファイルの初期内容" }
+    ]
+  },
+  {
+    "command": "Get-Content",
+    "example": "Get-Content -Path file.txt",
+    "description": "ファイルの内容を取得（typeの強化版）",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Path", "detail": "ファイルパス" },
+      { "option": "-TotalCount", "detail": "読み取る行数を制限" },
+      { "option": "-Tail", "detail": "末尾の指定行数を表示" },
+      { "option": "-Wait", "detail": "ファイルの更新を監視" }
+    ]
+  },
+  {
+    "command": "Set-Content",
+    "example": "Set-Content -Path file.txt -Value \"Hello World\"",
+    "description": "ファイルに内容を書き込み",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Path", "detail": "ファイルパス" },
+      { "option": "-Value", "detail": "書き込む内容" },
+      { "option": "-Encoding", "detail": "文字エンコーディング" },
+      { "option": "-Force", "detail": "読み取り専用ファイルも上書き" }
+    ]
+  },
+  {
+    "command": "Add-Content",
+    "example": "Add-Content -Path file.txt -Value \"New line\"",
+    "description": "ファイルに内容を追記",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Path", "detail": "ファイルパス" },
+      { "option": "-Value", "detail": "追記する内容" },
+      { "option": "-Encoding", "detail": "文字エンコーディング" }
+    ]
+  },
+  {
+    "command": "Select-String",
+    "example": "Select-String -Pattern \"error\" -Path *.log",
+    "description": "文字列パターンを検索（findstrの強化版）",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Pattern", "detail": "検索パターン" },
+      { "option": "-Path", "detail": "検索対象ファイル" },
+      { "option": "-Recurse", "detail": "サブディレクトリも検索" },
+      { "option": "-CaseSensitive", "detail": "大文字小文字を区別" }
+    ]
+  },
+  {
+    "command": "Get-Process",
+    "example": "Get-Process | Where-Object {$_.CPU -gt 100}",
+    "description": "プロセス一覧を取得（tasklistの強化版）",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Name", "detail": "プロセス名で絞り込み" },
+      { "option": "-Id", "detail": "プロセスIDで絞り込み" },
+      { "option": "-ComputerName", "detail": "リモートコンピューターを指定" }
+    ]
+  },
+  {
+    "command": "Stop-Process",
+    "example": "Stop-Process -Name notepad -Force",
+    "description": "プロセスを停止（taskkillの強化版）",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Name", "detail": "プロセス名で指定" },
+      { "option": "-Id", "detail": "プロセスIDで指定" },
+      { "option": "-Force", "detail": "強制停止" },
+      { "option": "-PassThru", "detail": "停止したプロセスオブジェクトを返す" }
+    ]
+  },
+  {
+    "command": "Get-Service",
+    "example": "Get-Service | Where-Object {$_.Status -eq 'Running'}",
+    "description": "サービス一覧を取得",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Name", "detail": "サービス名で絞り込み" },
+      { "option": "-DisplayName", "detail": "表示名で絞り込み" },
+      { "option": "-ComputerName", "detail": "リモートコンピューターを指定" }
+    ]
+  },
+  {
+    "command": "Start-Service",
+    "example": "Start-Service -Name Spooler",
+    "description": "サービスを開始",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Name", "detail": "サービス名を指定" },
+      { "option": "-DisplayName", "detail": "表示名で指定" },
+      { "option": "-PassThru", "detail": "サービスオブジェクトを返す" }
+    ]
+  },
+  {
+    "command": "Stop-Service",
+    "example": "Stop-Service -Name Spooler -Force",
+    "description": "サービスを停止",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Name", "detail": "サービス名を指定" },
+      { "option": "-Force", "detail": "依存サービスも強制停止" },
+      { "option": "-PassThru", "detail": "サービスオブジェクトを返す" }
+    ]
+  },
+  {
+    "command": "Test-Connection",
+    "example": "Test-Connection -ComputerName google.com -Count 4",
+    "description": "ネットワーク接続をテスト（pingの強化版）",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-ComputerName", "detail": "接続先ホスト名" },
+      { "option": "-Count", "detail": "送信回数" },
+      { "option": "-Delay", "detail": "送信間隔（秒）" },
+      { "option": "-Quiet", "detail": "真偽値のみ返す" }
+    ]
+  },
+  {
+    "command": "Get-NetIPAddress",
+    "example": "Get-NetIPAddress -AddressFamily IPv4",
+    "description": "IPアドレス設定を取得（ipconfigの強化版）",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-AddressFamily", "detail": "IPv4またはIPv6を指定" },
+      {
+        "option": "-InterfaceAlias",
+        "detail": "ネットワークアダプター名で絞り込み"
+      },
+      { "option": "-AddressState", "detail": "アドレス状態で絞り込み" }
+    ]
+  },
+  {
+    "command": "Import-Csv",
+    "example": "Import-Csv -Path data.csv | Select-Object Name, Age",
+    "description": "CSVファイルを読み込んでオブジェクトに変換",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Path", "detail": "読み込むCSVファイルパス" },
+      { "option": "-Delimiter", "detail": "区切り文字を指定" },
+      { "option": "-Encoding", "detail": "文字エンコーディングを指定" },
+      { "option": "-Header", "detail": "カスタムヘッダーを指定" }
+    ]
+  },
+  {
+    "command": "Export-Csv",
+    "example": "Get-Process | Export-Csv -Path processes.csv -NoTypeInformation",
+    "description": "オブジェクトをCSVファイルに出力",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Path", "detail": "出力CSVファイルパス" },
+      { "option": "-NoTypeInformation", "detail": "型情報を含めない" },
+      { "option": "-Delimiter", "detail": "区切り文字を指定" },
+      { "option": "-Encoding", "detail": "文字エンコーディングを指定" },
+      { "option": "-Append", "detail": "既存ファイルに追記" }
+    ]
+  },
+  {
+    "command": "Invoke-WebRequest",
+    "example": "Invoke-WebRequest -Uri 'https://api.example.com' -Method GET",
+    "description": "HTTP/HTTPSリクエストを送信（curlの強化版）",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-Uri", "detail": "リクエスト先URL" },
+      { "option": "-Method", "detail": "HTTPメソッド（GET/POST/PUT/DELETE）" },
+      { "option": "-Headers", "detail": "カスタムヘッダーを指定" },
+      { "option": "-Body", "detail": "リクエストボディ" },
+      { "option": "-OutFile", "detail": "レスポンスをファイルに保存" }
+    ]
+  },
+  {
+    "command": "Test-NetConnection",
+    "example": "Test-NetConnection -ComputerName google.com -Port 80",
+    "description": "ネットワーク接続をテスト（pingの強化版）",
+    "os": ["Windows"],
+    "params": [
+      { "option": "-ComputerName", "detail": "接続先ホスト名" },
+      { "option": "-Port", "detail": "接続テストするポート番号" },
+      { "option": "-TraceRoute", "detail": "ルート追跡も実行" },
+      { "option": "-DiagnoseRouting", "detail": "ルーティング診断を実行" }
+    ]
+  },
+  {
+    "command": "Get-EventLog",
+    "example": "Get-EventLog -LogName System -Newest 50",
+    "description": "Windowsイベントログを取得",
+    "os": ["Windows"],
+    "params": [
+      {
+        "option": "-LogName",
+        "detail": "ログ名（System/Application/Security）"
+      },
+      { "option": "-Newest", "detail": "最新のN件を取得" },
+      {
+        "option": "-EntryType",
+        "detail": "エントリタイプで絞り込み（Error/Warning/Information）"
+      },
+      { "option": "-Source", "detail": "ソースで絞り込み" },
+      { "option": "-After", "detail": "指定日時以降のログを取得" }
+    ]
+  },
+  {
+    "command": "git status",
+    "example": "git status",
+    "description": "作業ディレクトリの状態を確認",
+    "os": ["Git"],
+    "params": [
+      { "option": "-s", "detail": "短縮形式で表示" },
+      { "option": "--porcelain", "detail": "スクリプト用の安定した形式" },
+      { "option": "-b", "detail": "ブランチ情報も表示" }
+    ]
+  },
+  {
+    "command": "git add",
+    "example": "git add .",
+    "description": "ファイルをステージング領域に追加",
+    "os": ["Git"],
+    "params": [
+      { "option": ".", "detail": "全ての変更をステージング" },
+      { "option": "-A", "detail": "削除も含めて全ての変更をステージング" },
+      { "option": "-u", "detail": "追跡中のファイルのみステージング" },
+      { "option": "-p", "detail": "対話的にハンクを選択してステージング" }
+    ]
+  },
+  {
+    "command": "git commit",
+    "example": "git commit -m \"コミットメッセージ\"",
+    "description": "ステージングされた変更をコミット",
+    "os": ["Git"],
+    "params": [
+      { "option": "-m", "detail": "コミットメッセージを指定" },
+      { "option": "-a", "detail": "変更されたファイルを自動的にステージング" },
+      { "option": "--amend", "detail": "最後のコミットを修正" },
+      { "option": "-v", "detail": "差分を表示してコミット" }
+    ]
+  },
+  {
+    "command": "git push",
+    "example": "git push origin main",
+    "description": "ローカルの変更をリモートリポジトリにプッシュ",
+    "os": ["Git"],
+    "params": [
+      { "option": "-u", "detail": "上流ブランチを設定" },
+      { "option": "--force", "detail": "強制プッシュ（危険）" },
+      { "option": "--tags", "detail": "タグもプッシュ" },
+      { "option": "--dry-run", "detail": "実際にプッシュせずにテスト" }
+    ]
+  },
+  {
+    "command": "git pull",
+    "example": "git pull origin main",
+    "description": "リモートリポジトリから変更をプル",
+    "os": ["Git"],
+    "params": [
+      { "option": "--rebase", "detail": "マージではなくリベースを使用" },
+      { "option": "--no-commit", "detail": "自動コミットを行わない" },
+      { "option": "--ff-only", "detail": "Fast-forwardの場合のみマージ" }
+    ]
+  },
+  {
+    "command": "git branch",
+    "example": "git branch -a",
+    "description": "ブランチの一覧表示・作成・削除",
+    "os": ["Git"],
+    "params": [
+      { "option": "-a", "detail": "リモートブランチも含めて表示" },
+      { "option": "-d", "detail": "ブランチを削除" },
+      { "option": "-D", "detail": "ブランチを強制削除" },
+      { "option": "-m", "detail": "ブランチ名を変更" }
+    ]
+  },
+  {
+    "command": "git checkout",
+    "example": "git checkout main",
+    "description": "ブランチを切り替えまたはファイルを復元",
+    "os": ["Git"],
+    "params": [
+      { "option": "-b", "detail": "新しいブランチを作成して切り替え" },
+      { "option": "-", "detail": "前のブランチに切り替え" },
+      { "option": "-- <file>", "detail": "指定ファイルを復元" }
+    ]
+  },
+  {
+    "command": "git log",
+    "example": "git log --oneline",
+    "description": "コミット履歴を表示",
+    "os": ["Git"],
+    "params": [
+      { "option": "--oneline", "detail": "1行で簡潔に表示" },
+      { "option": "--graph", "detail": "ブランチのグラフを表示" },
+      { "option": "-p", "detail": "差分も表示" },
+      { "option": "-n", "detail": "表示するコミット数を制限" }
+    ]
+  },
+  {
+    "command": "git diff",
+    "example": "git diff HEAD~1",
+    "description": "ファイルの差分を表示",
+    "os": ["Git"],
+    "params": [
+      { "option": "--cached", "detail": "ステージングされた変更の差分" },
+      { "option": "--name-only", "detail": "変更されたファイル名のみ表示" },
+      { "option": "--stat", "detail": "統計情報を表示" }
+    ]
+  },
+  {
+    "command": "git merge",
+    "example": "git merge feature-branch",
+    "description": "ブランチをマージ",
+    "os": ["Git"],
+    "params": [
+      { "option": "--no-ff", "detail": "Fast-forwardでもマージコミットを作成" },
+      { "option": "--squash", "detail": "コミットをまとめてマージ" },
+      { "option": "--abort", "detail": "マージを中止" }
+    ]
+  }
+]
